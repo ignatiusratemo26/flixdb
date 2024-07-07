@@ -10,6 +10,8 @@ class WatchlistSerializer(serializers.ModelSerializer):
         # exclude = ['active']
 
 class StreamPlatformSerializer(serializers.ModelSerializer):
+    # from the related name 'watchlist' in models
+    watchlist = WatchlistSerializer(many= True, read_only=True)
     class Meta:
         model = StreamPlatform
         fields = '__all__'
